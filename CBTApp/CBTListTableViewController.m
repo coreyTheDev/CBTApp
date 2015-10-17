@@ -46,6 +46,10 @@
 
 -(void)populateListOfCBTSessions
 {
+    if (!self.managedContext)
+    {
+        return;
+    }
     //create fetch request for specific items
     NSFetchRequest *requestForCBTSessions = [[NSFetchRequest alloc] initWithEntityName:@"CBTBase"];
     //TODO: need items sorted
