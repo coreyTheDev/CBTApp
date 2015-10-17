@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A284" minimumToolsVersion="Automatic">
+    <entity name="CBTBase" representedClassName="CBTBase" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="CBTSession" representedClassName="CBTSession" parentEntity="CBTBase" syncable="YES">
+        <attribute name="alternativeThought" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="evidenceAgainst" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="postMood" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="preMood" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="preMoodList" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="supportingEvidence" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="thoughtsList" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CBTSession" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="CBTBase" positionX="-54" positionY="63" width="128" height="90"/>
+    </elements>
+</model>
