@@ -8,6 +8,7 @@
 
 #import "CBTListTableViewController.h"
 #import "CBTBase.h"
+#import "CBTSessionViewController.h"
 
 #define CBT_TABLEVIEW_CELL @"CBT_TABLEVIEW_CELL"
 
@@ -118,14 +119,15 @@
 }
 */
 
-/*
-#pragma mark - Navigation
+
+#pragma mark - Navigation -
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    CBTSessionViewController *cbtSessionViewController = (CBTSessionViewController*)segue.destinationViewController;
+    cbtSessionViewController.managedContext = self.managedContext;
 }
-*/
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A2E3BED1BDF99A2006BD8D3 /* CBTSectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E3BEB1BDF99A2006BD8D3 /* CBTSectionTableViewCell.m */; };
+		7A2E3BEE1BDF99A2006BD8D3 /* CBTSectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2E3BEC1BDF99A2006BD8D3 /* CBTSectionTableViewCell.xib */; };
 		7A40C9541BD26329000F08F4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C9531BD26329000F08F4 /* main.m */; };
 		7A40C9571BD26329000F08F4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C9561BD26329000F08F4 /* AppDelegate.m */; };
 		7A40C95D1BD26329000F08F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A40C95B1BD26329000F08F4 /* Main.storyboard */; };
@@ -15,12 +17,12 @@
 		7A40C9651BD26329000F08F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A40C9631BD26329000F08F4 /* LaunchScreen.storyboard */; };
 		7A40C9701BD26329000F08F4 /* CBTAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C96F1BD26329000F08F4 /* CBTAppTests.m */; };
 		7A40C97B1BD26329000F08F4 /* CBTAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C97A1BD26329000F08F4 /* CBTAppUITests.m */; };
-		7A40C98D1BD263BD000F08F4 /* CBTListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C98C1BD263BD000F08F4 /* CBTListTableViewController.m */; settings = {ASSET_TAGS = (); }; };
-		7A40C9971BD26590000F08F4 /* CBTSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C9961BD26590000F08F4 /* CBTSessionViewController.m */; settings = {ASSET_TAGS = (); }; };
-		7A40C9A11BD26742000F08F4 /* CBTSession+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C99A1BD26742000F08F4 /* CBTSession+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		7A40C9A21BD26742000F08F4 /* CBTSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C99C1BD26742000F08F4 /* CBTSession.m */; settings = {ASSET_TAGS = (); }; };
-		7A40C9A31BD26742000F08F4 /* CBTBase+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C99E1BD26742000F08F4 /* CBTBase+CoreDataProperties.m */; settings = {ASSET_TAGS = (); }; };
-		7A40C9A41BD26742000F08F4 /* CBTBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C9A01BD26742000F08F4 /* CBTBase.m */; settings = {ASSET_TAGS = (); }; };
+		7A40C98D1BD263BD000F08F4 /* CBTListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C98C1BD263BD000F08F4 /* CBTListTableViewController.m */; };
+		7A40C9971BD26590000F08F4 /* CBTSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C9961BD26590000F08F4 /* CBTSessionViewController.m */; };
+		7A40C9A11BD26742000F08F4 /* CBTSession+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C99A1BD26742000F08F4 /* CBTSession+CoreDataProperties.m */; };
+		7A40C9A21BD26742000F08F4 /* CBTSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C99C1BD26742000F08F4 /* CBTSession.m */; };
+		7A40C9A31BD26742000F08F4 /* CBTBase+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C99E1BD26742000F08F4 /* CBTBase+CoreDataProperties.m */; };
+		7A40C9A41BD26742000F08F4 /* CBTBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C9A01BD26742000F08F4 /* CBTBase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A2E3BEA1BDF99A2006BD8D3 /* CBTSectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTSectionTableViewCell.h; sourceTree = "<group>"; };
+		7A2E3BEB1BDF99A2006BD8D3 /* CBTSectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTSectionTableViewCell.m; sourceTree = "<group>"; };
+		7A2E3BEC1BDF99A2006BD8D3 /* CBTSectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBTSectionTableViewCell.xib; sourceTree = "<group>"; };
 		7A40C94F1BD26329000F08F4 /* CBTApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBTApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A40C9531BD26329000F08F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A40C9551BD26329000F08F4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -95,6 +100,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A2E3BE91BDF9982006BD8D3 /* TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7A2E3BEA1BDF99A2006BD8D3 /* CBTSectionTableViewCell.h */,
+				7A2E3BEB1BDF99A2006BD8D3 /* CBTSectionTableViewCell.m */,
+				7A2E3BEC1BDF99A2006BD8D3 /* CBTSectionTableViewCell.xib */,
+			);
+			name = "TableView Cells";
+			sourceTree = "<group>";
+		};
 		7A40C9461BD26329000F08F4 = {
 			isa = PBXGroup;
 			children = (
@@ -118,11 +133,11 @@
 		7A40C9511BD26329000F08F4 /* CBTApp */ = {
 			isa = PBXGroup;
 			children = (
+				7A40C95B1BD26329000F08F4 /* Main.storyboard */,
 				7A40C9551BD26329000F08F4 /* AppDelegate.h */,
 				7A40C9561BD26329000F08F4 /* AppDelegate.m */,
 				7A40C9941BD26531000F08F4 /* Data Model */,
 				7A40C9981BD2663B000F08F4 /* UI  */,
-				7A40C95B1BD26329000F08F4 /* Main.storyboard */,
 				7A40C9611BD26329000F08F4 /* Assets.xcassets */,
 				7A40C9631BD26329000F08F4 /* LaunchScreen.storyboard */,
 				7A40C9661BD26329000F08F4 /* Info.plist */,
@@ -160,6 +175,7 @@
 		7A40C9941BD26531000F08F4 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
+				7A40C95E1BD26329000F08F4 /* CBTApp.xcdatamodeld */,
 				7A40C9991BD26742000F08F4 /* CBTSession+CoreDataProperties.h */,
 				7A40C99A1BD26742000F08F4 /* CBTSession+CoreDataProperties.m */,
 				7A40C99B1BD26742000F08F4 /* CBTSession.h */,
@@ -168,7 +184,6 @@
 				7A40C99E1BD26742000F08F4 /* CBTBase+CoreDataProperties.m */,
 				7A40C99F1BD26742000F08F4 /* CBTBase.h */,
 				7A40C9A01BD26742000F08F4 /* CBTBase.m */,
-				7A40C95E1BD26329000F08F4 /* CBTApp.xcdatamodeld */,
 			);
 			name = "Data Model";
 			sourceTree = "<group>";
@@ -180,6 +195,7 @@
 				7A40C98C1BD263BD000F08F4 /* CBTListTableViewController.m */,
 				7A40C9951BD26590000F08F4 /* CBTSessionViewController.h */,
 				7A40C9961BD26590000F08F4 /* CBTSessionViewController.m */,
+				7A2E3BE91BDF9982006BD8D3 /* TableView Cells */,
 			);
 			name = "UI ";
 			sourceTree = "<group>";
@@ -288,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A40C9651BD26329000F08F4 /* LaunchScreen.storyboard in Resources */,
+				7A2E3BEE1BDF99A2006BD8D3 /* CBTSectionTableViewCell.xib in Resources */,
 				7A40C9621BD26329000F08F4 /* Assets.xcassets in Resources */,
 				7A40C95D1BD26329000F08F4 /* Main.storyboard in Resources */,
 			);
@@ -315,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A40C9601BD26329000F08F4 /* CBTApp.xcdatamodeld in Sources */,
+				7A2E3BED1BDF99A2006BD8D3 /* CBTSectionTableViewCell.m in Sources */,
 				7A40C9971BD26590000F08F4 /* CBTSessionViewController.m in Sources */,
 				7A40C9A21BD26742000F08F4 /* CBTSession.m in Sources */,
 				7A40C9A41BD26742000F08F4 /* CBTBase.m in Sources */,
@@ -546,6 +564,7 @@
 				7A40C9811BD26329000F08F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A40C9821BD26329000F08F4 /* Build configuration list for PBXNativeTarget "CBTAppTests" */ = {
 			isa = XCConfigurationList;
@@ -554,6 +573,7 @@
 				7A40C9841BD26329000F08F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A40C9851BD26329000F08F4 /* Build configuration list for PBXNativeTarget "CBTAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -562,6 +582,7 @@
 				7A40C9871BD26329000F08F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

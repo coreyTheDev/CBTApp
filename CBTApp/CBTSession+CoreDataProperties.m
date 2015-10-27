@@ -2,7 +2,7 @@
 //  CBTSession+CoreDataProperties.m
 //  CBTApp
 //
-//  Created by Corey Zanotti on 10/17/15.
+//  Created by Corey Zanotti on 10/27/15.
 //  Copyright © 2015 Corey Zanotti. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,12 +13,12 @@
 
 @implementation CBTSession (CoreDataProperties)
 
-@dynamic thoughtsList;
+@dynamic alternativeThought;
+@dynamic evidenceAgainst;
+@dynamic postMood;
 @dynamic preMood;
 @dynamic supportingEvidence;
-@dynamic evidenceAgainst;
-@dynamic alternativeThought;
-@dynamic postMood;
-@dynamic preMoodList;
+@dynamic thoughtsList;
+@dynamic situation;
 
 @end

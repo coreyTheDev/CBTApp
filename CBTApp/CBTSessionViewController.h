@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CBTSession.h"
 
-@interface CBTSessionViewController : UIViewController
+@interface CBTSessionViewController : UITableViewController
 @property (strong, nonatomic) NSString *cbtID;
+@property (strong, nonatomic) CBTSession *cbtSession;
+@property (strong, nonatomic) NSManagedObjectContext *managedContext;
 @end
