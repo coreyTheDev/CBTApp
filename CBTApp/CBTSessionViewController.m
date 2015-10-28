@@ -22,6 +22,8 @@
     [self.navigationItem.leftBarButtonItem setTitle:@""];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CBTSectionTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:CBT_TABLEVIEW_CELL];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 110;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,7 +79,7 @@
         default:
             break;
     }
-    [returnCell.mainTextView setText:placeholderText];
+    [returnCell.sectionLabel setText:placeholderText];
     return returnCell;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -87,9 +89,5 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 110;
 }
 @end

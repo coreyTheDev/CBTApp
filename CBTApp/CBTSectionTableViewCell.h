@@ -10,5 +10,6 @@
 #define CBT_TABLEVIEW_CELL @"CBT_TABLEVIEW_CELL"
 @interface CBTSectionTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UITextView *mainTextView;
+@property (weak, nonatomic) IBOutlet UILabel *sectionLabel;
 
 @end
