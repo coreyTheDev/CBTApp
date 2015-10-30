@@ -43,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A28735B1BE38DD2000872AE /* CBTSession+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBTSession+CoreDataProperties.h"; sourceTree = "<group>"; };
 		7A2E3BEA1BDF99A2006BD8D3 /* CBTSectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTSectionTableViewCell.h; sourceTree = "<group>"; };
 		7A2E3BEB1BDF99A2006BD8D3 /* CBTSectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTSectionTableViewCell.m; sourceTree = "<group>"; };
 		7A2E3BEC1BDF99A2006BD8D3 /* CBTSectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBTSectionTableViewCell.xib; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		7A40C98C1BD263BD000F08F4 /* CBTListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTListTableViewController.m; sourceTree = "<group>"; };
 		7A40C9951BD26590000F08F4 /* CBTSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTSessionViewController.h; sourceTree = "<group>"; };
 		7A40C9961BD26590000F08F4 /* CBTSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTSessionViewController.m; sourceTree = "<group>"; };
-		7A40C9991BD26742000F08F4 /* CBTSession+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBTSession+CoreDataProperties.h"; sourceTree = "<group>"; };
 		7A40C99A1BD26742000F08F4 /* CBTSession+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBTSession+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7A40C99B1BD26742000F08F4 /* CBTSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTSession.h; sourceTree = "<group>"; };
 		7A40C99C1BD26742000F08F4 /* CBTSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTSession.m; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				7A40C95E1BD26329000F08F4 /* CBTApp.xcdatamodeld */,
-				7A40C9991BD26742000F08F4 /* CBTSession+CoreDataProperties.h */,
+				7A28735B1BE38DD2000872AE /* CBTSession+CoreDataProperties.h */,
 				7A40C99A1BD26742000F08F4 /* CBTSession+CoreDataProperties.m */,
 				7A40C99B1BD26742000F08F4 /* CBTSession.h */,
 				7A40C99C1BD26742000F08F4 /* CBTSession.m */,
