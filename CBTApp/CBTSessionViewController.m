@@ -120,6 +120,7 @@
     return 1;
 }
 
+
 #pragma mark - UITextViewDelegate Methods
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
@@ -136,7 +137,30 @@
 }
 -(void)textViewDidChange:(UITextView *)textView
 {
+    CGSize size = textView.bounds.size;
+    CGSize newSize = [textView sizeThatFits:CGSizeMake(size.width, CGFLOAT_MAX)];
+    
+    CGFloat ceilingOfHeight = ceilf(size.height);
+    CGFloat ceilingOfNewHeight = ceilf(newSize.height);
+    if (ceilingOfHeight != ceilingOfNewHeight){
+        [UIView setAnimationsEnabled:NO];
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+        [UIView setAnimationsEnabled:YES];
+        
+        NSIndexPath *indexPathForThisCell = [NSIndexPath indexPathForRow:textView.tag inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexPathForThisCell atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
     /*
+//    CBTSectionTableViewCell *thisCurrentCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:textView.tag inSection:0]];
+//    
+//    CGSize newSize = [thisCurrentCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+//    
+//    if (newSize.height > thisCurrentCell.frame.size.height + 1)
+//    {
+//        NSLog(@"resizing current cell with new size width = %f and height = %f", newSize.width, newSize.height);
+////        [self.tableViewf reloadData];
+//    }
      //everytime the text is changed we need to adjust the height of the view
      self.userProfile.about = textView.text
      let aboutHeaderCell = self.tableView.headerViewForSection(6) as! EditProfileTableViewHeader
@@ -145,7 +169,7 @@
      aboutHeaderCell.addConstraint(widthConstraint)
      let size = aboutHeaderCell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
      aboutHeaderCell.removeConstraint(widthConstraint)
-     if ((size.height + 1.0) != aboutHeaderCell.frame.size.height)
+     if ad((size.height + 1.0) != aboutHeaderCell.frame.size.height)
      {
      print ("frame of about cell before adjustment = %d", aboutHeaderCell.frame)
      print ("frame of text view before adjustment = %d", aboutHeaderCell.expandingTextView!.frame)
