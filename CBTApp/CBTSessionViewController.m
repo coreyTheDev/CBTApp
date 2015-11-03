@@ -18,7 +18,7 @@
 #define PLACEHOLDER_TEXT_ALTERNATIVE_THOUGHT @"Is there an alternative thought that is closer to the truth?"
 #define PLACEHOLDER_TEXT_POST_MOOD @"How are you feeling now?"
 
-
+#define NUMBER_OF_CBT_FIELDS 8.0
 @interface CBTSessionViewController () <UITextViewDelegate>
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @end
@@ -113,7 +113,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return NUMBER_OF_CBT_FIELDS;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -129,6 +129,17 @@
         textView.text = @"";
     }
     
+    UIToolbar* keyboardToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    keyboardToolbar.barStyle = UIBarStyleDefault;
+    UIBarButtonItem *nextItem = [[UIBarButtonItem alloc]initWithTitle:textView.tag+1>=NUMBER_OF_CBT_FIELDS?@"Done":@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(moveToNextItem:)];
+    nextItem.tag = textView.tag;
+    keyboardToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissTextViewKeyboard)],
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                             nextItem,
+                           nil];
+    [keyboardToolbar sizeToFit];
+    textView.inputAccessoryView = keyboardToolbar;
     return YES;
 }
 -(BOOL)textViewShouldEndEditing:(UITextView *)textView
@@ -151,40 +162,58 @@
         NSIndexPath *indexPathForThisCell = [NSIndexPath indexPathForRow:textView.tag inSection:0];
         [self.tableView scrollToRowAtIndexPath:indexPathForThisCell atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
-    /*
-//    CBTSectionTableViewCell *thisCurrentCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:textView.tag inSection:0]];
-//    
-//    CGSize newSize = [thisCurrentCell systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-//    
-//    if (newSize.height > thisCurrentCell.frame.size.height + 1)
-//    {
-//        NSLog(@"resizing current cell with new size width = %f and height = %f", newSize.width, newSize.height);
-////        [self.tableViewf reloadData];
-//    }
-     //everytime the text is changed we need to adjust the height of the view
-     self.userProfile.about = textView.text
-     let aboutHeaderCell = self.tableView.headerViewForSection(6) as! EditProfileTableViewHeader
-     let widthConstraint = NSLayoutConstraint(item: aboutHeaderCell.expandingTextView!, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem:nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: (aboutHeaderCell.expandingTextView?.frame.size.width)!)
-     
-     aboutHeaderCell.addConstraint(widthConstraint)
-     let size = aboutHeaderCell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-     aboutHeaderCell.removeConstraint(widthConstraint)
-     if ad((size.height + 1.0) != aboutHeaderCell.frame.size.height)
-     {
-     print ("frame of about cell before adjustment = %d", aboutHeaderCell.frame)
-     print ("frame of text view before adjustment = %d", aboutHeaderCell.expandingTextView!.frame)
-     //            aboutHeaderCell.frame.size.height = size.height + 1.0;
-     //            aboutHeaderCell.layoutIfNeeded()
-     
-     self.tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(7, 4)), withRowAnimation: .None)
-     print ("frame of about cell after adjustment = %d", aboutHeaderCell.frame)
-     print ("frame of text view after adjustment = %d", aboutHeaderCell.expandingTextView!.frame)
-     
-     
-     aboutHeaderCell.frame.size.height = size.height + 1.0;
-     aboutHeaderCell.layoutIfNeeded()
-     }
+}
 
-     */
+#pragma mark - UI Methods
+-(void)moveToNextItem:(UIBarButtonItem *)nextBarButtonItem
+{
+    CBTSectionTableViewCell *thisTableViewCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:nextBarButtonItem.tag inSection:0]];
+    [self setString:thisTableViewCell.mainTextView.text forCBTSection:nextBarButtonItem.tag];
+    
+    if (nextBarButtonItem.tag + 1 == NUMBER_OF_CBT_FIELDS)
+    {
+        [self.view endEditing:YES];
+    } else
+    {    
+        CBTSectionTableViewCell *nextTableViewCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:nextBarButtonItem.tag + 1 inSection:0]];
+        [nextTableViewCell.mainTextView becomeFirstResponder];
+    }
+}
+-(void)dismissTextViewKeyboard
+{
+    [self.view endEditing:YES];
+}
+
+#pragma mark - Data Methods
+-(void)setString:(NSString *)cbtData forCBTSection:(NSInteger)section
+{
+    switch (section) {
+        case 0:
+            self.cbtSession.situation = cbtData;
+            break;
+        case 1:
+            self.cbtSession.preMood = cbtData;
+            break;
+        case 2:
+            self.cbtSession.thoughtsList = cbtData;
+            break;
+        case 3:
+            self.cbtSession.hotThought = cbtData;
+            break;
+        case 4:
+            self.cbtSession.supportingEvidence = cbtData;
+            break;
+        case 5:
+            self.cbtSession.evidenceAgainst = cbtData;
+            break;
+        case 6:
+            self.cbtSession.alternativeThought = cbtData;
+            break;
+        case 7:
+            self.cbtSession.postMood = cbtData;
+            break;
+        default:
+            break;
+    }
 }
 @end
