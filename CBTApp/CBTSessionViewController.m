@@ -29,11 +29,12 @@
     [super viewDidLoad];
     
     [self.navigationItem setTitle:[self.dateFormatter stringFromDate:[NSDate new]]];
-    [self.navigationItem.leftBarButtonItem setTitle:@""];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveDataToContextAndDismissView)]];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CBTSectionTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:CBT_TABLEVIEW_CELL];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 110;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -174,7 +175,7 @@
     {
         [self.view endEditing:YES];
     } else
-    {    
+    {
         CBTSectionTableViewCell *nextTableViewCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:nextBarButtonItem.tag + 1 inSection:0]];
         [nextTableViewCell.mainTextView becomeFirstResponder];
     }
@@ -215,5 +216,17 @@
         default:
             break;
     }
+}
+
+-(void)saveDataToContextAndDismissView
+{
+    NSError *savingError;
+    [self.managedContext save:&savingError];
+    
+    if (savingError)
+    {
+        NSLog(@"Couldn't save to Core Data");
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

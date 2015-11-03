@@ -28,6 +28,11 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CBT_TABLEVIEW_CELL];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationItem setTitle:@"C.B.T. Sessions"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -128,6 +133,7 @@
     // Pass the selected object to the new view controller.
     CBTSessionViewController *cbtSessionViewController = (CBTSessionViewController*)segue.destinationViewController;
     cbtSessionViewController.managedContext = self.managedContext;
+    self.navigationItem.title = @"";
 }
 
 @end
