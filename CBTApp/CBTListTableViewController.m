@@ -35,6 +35,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [self.navigationItem setTitle:@"C.B.T. Sessions"];
+    [self populateListOfCBTSessions];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

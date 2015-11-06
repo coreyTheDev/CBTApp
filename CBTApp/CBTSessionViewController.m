@@ -28,10 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if (!self.cbtSession)
-    {
-        self.cbtSession.date = [NSDate new];
-    }
     
     [self.navigationItem setTitle:[self.dateFormatter stringFromDate:self.cbtSession.date]];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveDataToContextAndDismissView)]];
@@ -64,6 +60,7 @@
     if (!_cbtSession)
     {
         _cbtSession = [[CBTSession alloc]initWithEntity:[NSEntityDescription entityForName:@"CBTSession" inManagedObjectContext:self.managedContext] insertIntoManagedObjectContext:self.managedContext];
+        _cbtSession.date = [NSDate new];
     }
     return _cbtSession;
 }
