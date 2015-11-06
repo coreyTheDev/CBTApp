@@ -12,20 +12,24 @@
 
 #define CBT_TABLEVIEW_CELL @"CBT_TABLEVIEW_CELL"
 
+#define HEIGHT_OF_TABLEVIEW_CELL 55.0
+
 @interface CBTListTableViewController ()
-@property (strong, nonatomic) NSMutableArray *listOfCBTSessions;
+@property (strong, nonatomic) NSArray *listOfCBTSessions;
 @property (strong, nonatomic) NSDateFormatter *dateFormatterForCBTSessions;
 -(void)populateListOfCBTSessions;
 @end
 
 @implementation CBTListTableViewController
-
+{
+    CBTBase *selectedSession;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.clearsSelectionOnViewWillAppear = NO;
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CBT_TABLEVIEW_CELL];
+    [self populateListOfCBTSessions];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -59,11 +63,18 @@
     //create fetch request for specific items
     NSFetchRequest *requestForCBTSessions = [[NSFetchRequest alloc] initWithEntityName:@"CBTBase"];
     //TODO: need items sorted
-    //fetch items
     
-    //parse items and put into list of cbt sessions
+    //fetch items
+    NSError *fetchError = nil;
+    self.listOfCBTSessions = [self.managedContext executeFetchRequest:requestForCBTSessions error:&fetchError];
+    
+    if (fetchError)
+    {
+        NSLog(@"failed to fetch items");
+    }
     
     //realod data
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -79,16 +90,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CBT_TABLEVIEW_CELL forIndexPath:indexPath];
-    
+
     CBTBase *cbtSessionForThisCell = [self.listOfCBTSessions objectAtIndex:indexPath.row];
     
     [cell.textLabel setText:cbtSessionForThisCell.name];
     [cell.detailTextLabel setText:[self.dateFormatterForCBTSessions stringFromDate:cbtSessionForThisCell.date]];
-    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-    [cell.accessoryView setHidden:NO];
     return cell;
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return HEIGHT_OF_TABLEVIEW_CELL;
+}
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    selectedSession = [self.listOfCBTSessions objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"existingSessionViewController" sender:self];
+}
 
 /*
 // Override to support conditional editing of the table view.
@@ -134,6 +152,26 @@
     CBTSessionViewController *cbtSessionViewController = (CBTSessionViewController*)segue.destinationViewController;
     cbtSessionViewController.managedContext = self.managedContext;
     self.navigationItem.title = @"";
+    
+    if ([segue.identifier isEqualToString:@"existingSessionViewController"])
+    {
+        NSFetchRequest *requestForCurrentSession = [NSFetchRequest fetchRequestWithEntityName:@"CBTSession"];
+        NSPredicate *predicateForCurrentSession = [NSPredicate predicateWithFormat:@"date == %@",selectedSession.date];
+        [requestForCurrentSession setPredicate:predicateForCurrentSession];
+        
+        NSError *fetchError;
+        NSArray *results;
+        results = [self.managedContext executeFetchRequest:requestForCurrentSession error:&fetchError];
+        
+        if (fetchError)
+        {
+            NSLog(@"Couldn't find corresponding session");
+        }
+        else
+        {
+            cbtSessionViewController.cbtSession = [results lastObject];
+        }
+    }
 }
 
 @end

@@ -13,6 +13,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CBT_TABLEVIEW_CELL" textLabel="Vzy-4G-blS" detailTextLabel="Xxb-5c-JhP" style="IBUITableViewCellStyleSubtitle" id="kCo-kZ-emn">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kCo-kZ-emn" id="m6N-9S-HlE">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vzy-4G-blS">
+                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xxb-5c-JhP">
+                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="sJI-cb-vJt" id="haj-Wl-sE1"/>
                             <outlet property="delegate" destination="sJI-cb-vJt" id="KCd-Si-rRx"/>
@@ -21,14 +51,17 @@
                     <navigationItem key="navigationItem" title="C.B.T. Sessions" id="5rQ-BR-uy8">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8bD-Ge-QxW">
                             <connections>
-                                <segue destination="8RF-3H-y4O" kind="show" id="54K-Ri-bJ6"/>
+                                <segue destination="8RF-3H-y4O" kind="show" identifier="newSessionViewController" id="54K-Ri-bJ6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="8RF-3H-y4O" kind="show" identifier="existingSessionViewController" id="rVy-hP-XGR"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K8d-pG-qwH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-90" y="414"/>
+            <point key="canvasLocation" x="-278" y="382"/>
         </scene>
         <!--Session View Controller-->
         <scene sceneID="iKR-tH-jSA">
@@ -59,7 +92,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="05e-5S-5t0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596" y="414"/>
+            <point key="canvasLocation" x="665" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Dmn-dS-l6P">
@@ -79,4 +112,7 @@
             <point key="canvasLocation" x="-910" y="414"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="rVy-hP-XGR"/>
+    </inferredMetricsTieBreakers>
 </document>
