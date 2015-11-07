@@ -18,13 +18,19 @@
 #define PLACEHOLDER_TEXT_ALTERNATIVE_THOUGHT @"Is there an alternative thought that is closer to the truth?"
 #define PLACEHOLDER_TEXT_POST_MOOD @"How are you feeling now?"
 
+#define UNICODE_BULLET @"\u2022"
+
+
+
 #define NUMBER_OF_CBT_FIELDS 8.0
 @interface CBTSessionViewController () <UITextViewDelegate>
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @end
 
 @implementation CBTSessionViewController
-
+{
+    NSInteger sizeOfActiveTextView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -129,7 +135,7 @@
 {
     if ([textView.text isEqualToString:PLACEHOLDER_TEXT_POST_MOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_ALTERNATIVE_THOUGHT] || [textView.text isEqualToString:PLACEHOLDER_TEXT_AUTOMATIC_THOUGHTS] || [textView.text isEqualToString:PLACEHOLDER_TEXT_EVIDENCE_AGAINST] || [textView.text isEqualToString:PLACEHOLDER_TEXT_HOT_THOUGHT] || [textView.text isEqualToString:PLACEHOLDER_TEXT_PREMOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SITUATION] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SUPPORTING_EVIDENCE])
     {
-        textView.text = @"";
+        textView.text = textView.tag == 0?@"":UNICODE_BULLET;
     }
     
     UIToolbar* keyboardToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
@@ -143,6 +149,8 @@
                            nil];
     [keyboardToolbar sizeToFit];
     textView.inputAccessoryView = keyboardToolbar;
+    
+    sizeOfActiveTextView = textView.text.length;
     return YES;
 }
 -(BOOL)textViewShouldEndEditing:(UITextView *)textView
@@ -165,6 +173,13 @@
         NSIndexPath *indexPathForThisCell = [NSIndexPath indexPathForRow:textView.tag inSection:0];
         [self.tableView scrollToRowAtIndexPath:indexPathForThisCell atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
+    
+    //this line of code detects a new line character thats been added to the textview opposed to one thats encountered because of a deletion.
+    if ([textView.text characterAtIndex:textView.text.length-1] == '\n' && sizeOfActiveTextView < textView.text.length)
+    {
+        textView.text = [NSString stringWithFormat:@"%@%@ ",textView.text,UNICODE_BULLET];
+    }
+    sizeOfActiveTextView = textView.text.length;
 }
 
 #pragma mark - UI Methods
