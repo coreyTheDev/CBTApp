@@ -25,11 +25,13 @@
 #define NUMBER_OF_CBT_FIELDS 8.0
 @interface CBTSessionViewController () <UITextViewDelegate>
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
+@property (strong, nonatomic) NSMutableArray *automaticThoughts;
 @end
 
 @implementation CBTSessionViewController
 {
     NSInteger sizeOfActiveTextView;
+    NSString *temporaryAutomaticThoughtString;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,6 +44,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 110;
     
+    temporaryAutomaticThoughtString = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +72,12 @@
         _cbtSession.date = [NSDate new];
     }
     return _cbtSession;
+}
+-(NSMutableArray *)automaticThoughts
+{
+    if (!_automaticThoughts)
+        _automaticThoughts = [NSMutableArray new];
+    return _automaticThoughts;
 }
 
 #pragma mark - UITableViewDelegate and Datasource
@@ -131,6 +140,12 @@
 
 
 #pragma mark - UITextViewDelegate Methods
+/*
+ Logic for determining the touch event for the "hot thought"
+ 1. if we're just now selecting the automatic thoughts from the hot thought text view
+ 2. then we grab the selected range in the text view's text, which should be an insertion point
+ 3.
+ */
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     if ([textView.text isEqualToString:PLACEHOLDER_TEXT_POST_MOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_ALTERNATIVE_THOUGHT] || [textView.text isEqualToString:PLACEHOLDER_TEXT_AUTOMATIC_THOUGHTS] || [textView.text isEqualToString:PLACEHOLDER_TEXT_EVIDENCE_AGAINST] || [textView.text isEqualToString:PLACEHOLDER_TEXT_HOT_THOUGHT] || [textView.text isEqualToString:PLACEHOLDER_TEXT_PREMOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SITUATION] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SUPPORTING_EVIDENCE])
@@ -175,8 +190,18 @@
     }
     
     //this line of code detects a new line character thats been added to the textview opposed to one thats encountered because of a deletion.
+    if (textView.tag == 2)
+    {
+        temporaryAutomaticThoughtString = [NSString stringWithFormat:@"%@%c",temporaryAutomaticThoughtString,[textView.text characterAtIndex:textView.text.length - 1]];
+    }
     if ([textView.text characterAtIndex:textView.text.length-1] == '\n' && sizeOfActiveTextView < textView.text.length)
     {
+        if (textView.tag == 2)
+        {
+            //new automatic thought has been entered we need to grab it and put it in the array
+            [self.automaticThoughts addObject:temporaryAutomaticThoughtString];
+            temporaryAutomaticThoughtString = @"";
+        }
         textView.text = [NSString stringWithFormat:@"%@%@ ",textView.text,UNICODE_BULLET];
     }
     sizeOfActiveTextView = textView.text.length;

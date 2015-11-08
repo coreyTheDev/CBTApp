@@ -23,6 +23,8 @@
 		7A40C9A21BD26742000F08F4 /* CBTSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C99C1BD26742000F08F4 /* CBTSession.m */; };
 		7A40C9A31BD26742000F08F4 /* CBTBase+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C99E1BD26742000F08F4 /* CBTBase+CoreDataProperties.m */; };
 		7A40C9A41BD26742000F08F4 /* CBTBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C9A01BD26742000F08F4 /* CBTBase.m */; };
+		7A7A42471BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A42451BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.m */; };
+		E63982A9073352867B370CCB /* libPods-CBTApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6495BE8C74C65C8AC8182D0 /* libPods-CBTApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38F4496FB22944B54D00509A /* Pods-CBTApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBTApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CBTApp/Pods-CBTApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7A28735B1BE38DD2000872AE /* CBTSession+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CBTSession+CoreDataProperties.h"; sourceTree = "<group>"; };
 		7A2E3BEA1BDF99A2006BD8D3 /* CBTSectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTSectionTableViewCell.h; sourceTree = "<group>"; };
 		7A2E3BEB1BDF99A2006BD8D3 /* CBTSectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTSectionTableViewCell.m; sourceTree = "<group>"; };
@@ -73,6 +76,10 @@
 		7A40C99E1BD26742000F08F4 /* CBTBase+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBTBase+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7A40C99F1BD26742000F08F4 /* CBTBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTBase.h; sourceTree = "<group>"; };
 		7A40C9A01BD26742000F08F4 /* CBTBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTBase.m; sourceTree = "<group>"; };
+		7A7A42441BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotThoughtSelectionViewController.h; sourceTree = "<group>"; };
+		7A7A42451BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotThoughtSelectionViewController.m; sourceTree = "<group>"; };
+		D6495BE8C74C65C8AC8182D0 /* libPods-CBTApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CBTApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DCEFA3E7007140FBCB11A144 /* Pods-CBTApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBTApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CBTApp/Pods-CBTApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E63982A9073352867B370CCB /* libPods-CBTApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1831D9F2AFD2BB4BA1DE3BB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D6495BE8C74C65C8AC8182D0 /* libPods-CBTApp.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7A2E3BE91BDF9982006BD8D3 /* TableView Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +133,8 @@
 				7A40C96E1BD26329000F08F4 /* CBTAppTests */,
 				7A40C9791BD26329000F08F4 /* CBTAppUITests */,
 				7A40C9501BD26329000F08F4 /* Products */,
+				E89FFF2C84156D05CE3A4679 /* Pods */,
+				1831D9F2AFD2BB4BA1DE3BB7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,9 +213,20 @@
 				7A40C98C1BD263BD000F08F4 /* CBTListTableViewController.m */,
 				7A40C9951BD26590000F08F4 /* CBTSessionViewController.h */,
 				7A40C9961BD26590000F08F4 /* CBTSessionViewController.m */,
+				7A7A42441BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.h */,
+				7A7A42451BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.m */,
 				7A2E3BE91BDF9982006BD8D3 /* TableView Cells */,
 			);
 			name = "UI ";
+			sourceTree = "<group>";
+		};
+		E89FFF2C84156D05CE3A4679 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				38F4496FB22944B54D00509A /* Pods-CBTApp.debug.xcconfig */,
+				DCEFA3E7007140FBCB11A144 /* Pods-CBTApp.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,9 +236,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A40C97F1BD26329000F08F4 /* Build configuration list for PBXNativeTarget "CBTApp" */;
 			buildPhases = (
+				594F69A4E85FA2983549ADF9 /* Check Pods Manifest.lock */,
 				7A40C94B1BD26329000F08F4 /* Sources */,
 				7A40C94C1BD26329000F08F4 /* Frameworks */,
 				7A40C94D1BD26329000F08F4 /* Resources */,
+				5F61867C5FFBCE85C6F63281 /* Embed Pods Frameworks */,
+				89B33CDD3C99AC36BCBC0884 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -326,6 +358,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		594F69A4E85FA2983549ADF9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5F61867C5FFBCE85C6F63281 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CBTApp/Pods-CBTApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89B33CDD3C99AC36BCBC0884 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CBTApp/Pods-CBTApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7A40C94B1BD26329000F08F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -339,6 +419,7 @@
 				7A40C9A11BD26742000F08F4 /* CBTSession+CoreDataProperties.m in Sources */,
 				7A40C9571BD26329000F08F4 /* AppDelegate.m in Sources */,
 				7A40C9541BD26329000F08F4 /* main.m in Sources */,
+				7A7A42471BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.m in Sources */,
 				7A40C9A31BD26742000F08F4 /* CBTBase+CoreDataProperties.m in Sources */,
 				7A40C98D1BD263BD000F08F4 /* CBTListTableViewController.m in Sources */,
 			);
@@ -477,6 +558,7 @@
 		};
 		7A40C9801BD26329000F08F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38F4496FB22944B54D00509A /* Pods-CBTApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CBTApp/Info.plist;
@@ -488,6 +570,7 @@
 		};
 		7A40C9811BD26329000F08F4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCEFA3E7007140FBCB11A144 /* Pods-CBTApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CBTApp/Info.plist;
