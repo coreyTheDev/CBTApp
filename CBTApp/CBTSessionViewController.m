@@ -12,7 +12,7 @@
 #define PLACEHOLDER_TEXT_SITUATION @"What's going on?"
 #define PLACEHOLDER_TEXT_PREMOOD @"How are you feeling?"
 #define PLACEHOLDER_TEXT_AUTOMATIC_THOUGHTS @"List your thoughts"
-#define PLACEHOLDER_TEXT_HOT_THOUGHT @"What thought is bothering you the most?"
+#define PLACEHOLDER_TEXT_HOT_THOUGHT @"Select the thought that's bothering you the most."
 #define PLACEHOLDER_TEXT_SUPPORTING_EVIDENCE @"What supports this thought?"
 #define PLACEHOLDER_TEXT_EVIDENCE_AGAINST @"What doesn't support this thought"
 #define PLACEHOLDER_TEXT_ALTERNATIVE_THOUGHT @"Is there an alternative thought that is closer to the truth?"
@@ -32,6 +32,7 @@
 {
     NSInteger sizeOfActiveTextView;
     NSString *temporaryAutomaticThoughtString;
+    BOOL inHotThoughtSelection;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +46,7 @@
     self.tableView.estimatedRowHeight = 110;
     
     temporaryAutomaticThoughtString = @"";
+    inHotThoughtSelection = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -148,9 +150,50 @@
  */
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    if ([textView.text isEqualToString:PLACEHOLDER_TEXT_POST_MOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_ALTERNATIVE_THOUGHT] || [textView.text isEqualToString:PLACEHOLDER_TEXT_AUTOMATIC_THOUGHTS] || [textView.text isEqualToString:PLACEHOLDER_TEXT_EVIDENCE_AGAINST] || [textView.text isEqualToString:PLACEHOLDER_TEXT_HOT_THOUGHT] || [textView.text isEqualToString:PLACEHOLDER_TEXT_PREMOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SITUATION] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SUPPORTING_EVIDENCE])
+    if (inHotThoughtSelection && textView.tag == 2)
+    {
+        NSArray *automaticThoughts=[textView.text componentsSeparatedByString:@"\n"];
+        NSRange selectedRange = textView.selectedRange;
+        NSInteger currentLocationInTextView = 0;
+        NSMutableAttributedString *attributedThoughtListString = [[NSMutableAttributedString alloc]initWithString:textView.text];
+        for (NSString *thought in automaticThoughts)
+        {
+            if ((currentLocationInTextView += thought.length) > selectedRange.location)
+            {
+                NSRange rangeOfThought = [textView.text rangeOfString:thought];
+                [attributedThoughtListString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:rangeOfThought];
+                inHotThoughtSelection = NO;
+                [textView setAttributedText:attributedThoughtListString];
+                return NO;
+            }
+            else
+                currentLocationInTextView += thought.length;
+        }
+        //        selectedRange.length += 10;
+        /*
+         - (IBAction)colorWord:(id)sender {
+         NSMutableAttributedString * string = [[NSMutableAttributedString alloc]initWithString:self.text.text];
+         
+         NSArray *words=[self.text.text componentsSeparatedByString:@" "];
+         
+         for (NSString *word in words) {
+         if ([word hasPrefix:@"@"]) {
+         NSRange range=[self.text.text rangeOfString:word];
+         [string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:range];
+         }
+         }
+         [self.text setAttributedText:string];
+         }
+         */
+        return NO;
+    }
+    if ([textView.text isEqualToString:PLACEHOLDER_TEXT_POST_MOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_ALTERNATIVE_THOUGHT] || [textView.text isEqualToString:PLACEHOLDER_TEXT_AUTOMATIC_THOUGHTS] || [textView.text isEqualToString:PLACEHOLDER_TEXT_EVIDENCE_AGAINST] || [textView.text isEqualToString:PLACEHOLDER_TEXT_PREMOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SITUATION] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SUPPORTING_EVIDENCE])
     {
         textView.text = textView.tag == 0?@"":UNICODE_BULLET;
+    }
+    if (textView.tag == 3)
+    {
+        inHotThoughtSelection = YES;
     }
     
     UIToolbar* keyboardToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
@@ -158,11 +201,12 @@
     UIBarButtonItem *nextItem = [[UIBarButtonItem alloc]initWithTitle:textView.tag+1>=NUMBER_OF_CBT_FIELDS?@"Done":@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(moveToNextItem:)];
     nextItem.tag = textView.tag;
     keyboardToolbar.items = [NSArray arrayWithObjects:
-                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissTextViewKeyboard)],
-                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                             [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissTextViewKeyboard)],
+                             [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                              nextItem,
-                           nil];
+                             nil];
     [keyboardToolbar sizeToFit];
+    
     textView.inputAccessoryView = keyboardToolbar;
     
     sizeOfActiveTextView = textView.text.length;
