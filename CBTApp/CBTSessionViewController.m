@@ -148,23 +148,32 @@
  2. then we grab the selected range in the text view's text, which should be an insertion point
  3.
  */
--(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+-(void)textViewDidChangeSelection:(UITextView *)textView
 {
     if (inHotThoughtSelection && textView.tag == 2)
     {
         NSArray *automaticThoughts=[textView.text componentsSeparatedByString:@"\n"];
-        NSRange selectedRange = textView.selectedRange;
+        UITextRange *selectedRange = textView.selectedTextRange;
+        NSInteger selectedIndex = [textView offsetFromPosition:textView.beginningOfDocument toPosition:selectedRange.start];
         NSInteger currentLocationInTextView = 0;
-        NSMutableAttributedString *attributedThoughtListString = [[NSMutableAttributedString alloc]initWithString:textView.text];
+        UIFont *fontForString = [UIFont fontWithName:@"HelveticaNeue" size:14];
+        NSDictionary *attributeDictionary = [NSDictionary dictionaryWithObject:fontForString forKey:NSFontAttributeName];
+        NSMutableAttributedString *attributedThoughtListString = [[NSMutableAttributedString alloc]initWithString:textView.text attributes:attributeDictionary];
         for (NSString *thought in automaticThoughts)
         {
-            if ((currentLocationInTextView += thought.length) > selectedRange.location)
+            if ((currentLocationInTextView += thought.length) > selectedIndex)
             {
                 NSRange rangeOfThought = [textView.text rangeOfString:thought];
-                [attributedThoughtListString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:rangeOfThought];
+                UIFont *fontForString = [UIFont fontWithName:@"HelveticaNeue" size:14];
+                NSDictionary *attributeDictionary = [NSDictionary dictionaryWithObjects:@[fontForString,[UIColor redColor]] forKeys:@[NSFontAttributeName,NSForegroundColorAttributeName]];
+                [attributedThoughtListString addAttributes:attributeDictionary range:rangeOfThought];
                 inHotThoughtSelection = NO;
                 [textView setAttributedText:attributedThoughtListString];
-                return NO;
+                
+                //give string to proper cell
+                CBTSectionTableViewCell *hotThoughtCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+                [hotThoughtCell.mainTextView setText:thought];
+                break;
             }
             else
                 currentLocationInTextView += thought.length;
@@ -185,6 +194,30 @@
          [self.text setAttributedText:string];
          }
          */
+    }
+}
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    if (inHotThoughtSelection && textView.tag == 2)
+    {
+        /* NSArray *automaticThoughts=[textView.text componentsSeparatedByString:@"\n"];
+        UITextRange *selectedRange = textView.selectedTextRange;
+        NSInteger selectedIndex = [textView offsetFromPosition:textView.beginningOfDocument toPosition:selectedRange.start];
+        NSInteger currentLocationInTextView = 0;
+        NSMutableAttributedString *attributedThoughtListString = [[NSMutableAttributedString alloc]initWithString:textView.text];
+        for (NSString *thought in automaticThoughts)
+        {
+            if ((currentLocationInTextView += thought.length) > selectedIndex)
+            {
+                NSRange rangeOfThought = [textView.text rangeOfString:thought];
+                [attributedThoughtListString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:rangeOfThought];
+                inHotThoughtSelection = NO;
+                [textView setAttributedText:attributedThoughtListString];
+                return NO;
+            }
+            else
+                currentLocationInTextView += thought.length;
+        }*/
         return NO;
     }
     if ([textView.text isEqualToString:PLACEHOLDER_TEXT_POST_MOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_ALTERNATIVE_THOUGHT] || [textView.text isEqualToString:PLACEHOLDER_TEXT_AUTOMATIC_THOUGHTS] || [textView.text isEqualToString:PLACEHOLDER_TEXT_EVIDENCE_AGAINST] || [textView.text isEqualToString:PLACEHOLDER_TEXT_PREMOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SITUATION] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SUPPORTING_EVIDENCE])
@@ -218,6 +251,7 @@
 }
 -(void)textViewDidChange:(UITextView *)textView
 {
+    
     CGSize size = textView.bounds.size;
     CGSize newSize = [textView sizeThatFits:CGSizeMake(size.width, CGFLOAT_MAX)];
     
