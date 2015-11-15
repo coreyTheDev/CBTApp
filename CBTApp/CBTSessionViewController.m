@@ -8,6 +8,7 @@
 
 #import "CBTSessionViewController.h"
 #import "CBTSectionTableViewCell.h"
+#import "HotThoughtSelectionTableViewController.h"
 
 #define PLACEHOLDER_TEXT_SITUATION @"What's going on?"
 #define PLACEHOLDER_TEXT_PREMOOD @"How are you feeling?"
@@ -23,7 +24,7 @@
 
 
 #define NUMBER_OF_CBT_FIELDS 8.0
-@interface CBTSessionViewController () <UITextViewDelegate>
+@interface CBTSessionViewController () <UITextViewDelegate, HotThoughtSelectionDelegate>
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSMutableArray *automaticThoughts;
 @end
@@ -33,12 +34,12 @@
     NSInteger sizeOfActiveTextView;
     NSString *temporaryAutomaticThoughtString;
     BOOL inHotThoughtSelection;
+    NSArray *automaticThoughts;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     
-    [self.navigationItem setTitle:[self.dateFormatter stringFromDate:self.cbtSession.date]];
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(saveDataToContextAndDismissView)]];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CBTSectionTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:CBT_TABLEVIEW_CELL];
@@ -47,6 +48,11 @@
     
     temporaryAutomaticThoughtString = @"";
     inHotThoughtSelection = NO;
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationItem setTitle:[self.dateFormatter stringFromDate:self.cbtSession.date]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,6 +111,7 @@
         case 3:
             placeholderText = @"Hot Thought";
             mainText = self.cbtSession.hotThought?:PLACEHOLDER_TEXT_HOT_THOUGHT;
+//            [returnCell.mainTextView setUserInteractionEnabled:NO];
             break;
         case 4:
             placeholderText = @"Supporting Evidence";
@@ -150,6 +157,7 @@
  */
 -(void)textViewDidChangeSelection:(UITextView *)textView
 {
+    /*
     if (inHotThoughtSelection && textView.tag == 2)
     {
         NSArray *automaticThoughts=[textView.text componentsSeparatedByString:@"\n"];
@@ -193,14 +201,13 @@
          }
          [self.text setAttributedText:string];
          }
-         */
-    }
+    }*/
 }
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    if (inHotThoughtSelection && textView.tag == 2)
+    /*if (inHotThoughtSelection && textView.tag == 2)
     {
-        /* NSArray *automaticThoughts=[textView.text componentsSeparatedByString:@"\n"];
+        /*
         UITextRange *selectedRange = textView.selectedTextRange;
         NSInteger selectedIndex = [textView offsetFromPosition:textView.beginningOfDocument toPosition:selectedRange.start];
         NSInteger currentLocationInTextView = 0;
@@ -217,9 +224,10 @@
             }
             else
                 currentLocationInTextView += thought.length;
-        }*/
+        }
         return NO;
-    }
+    }*/
+    
     if ([textView.text isEqualToString:PLACEHOLDER_TEXT_POST_MOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_ALTERNATIVE_THOUGHT] || [textView.text isEqualToString:PLACEHOLDER_TEXT_AUTOMATIC_THOUGHTS] || [textView.text isEqualToString:PLACEHOLDER_TEXT_EVIDENCE_AGAINST] || [textView.text isEqualToString:PLACEHOLDER_TEXT_PREMOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SITUATION] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SUPPORTING_EVIDENCE])
     {
         textView.text = textView.tag == 0?@"":UNICODE_BULLET;
@@ -294,15 +302,32 @@
     if (nextBarButtonItem.tag + 1 == NUMBER_OF_CBT_FIELDS)
     {
         [self.view endEditing:YES];
+    } else if (nextBarButtonItem.tag == 2)
+    {
+        automaticThoughts = [thisTableViewCell.mainTextView.text componentsSeparatedByString:@"\n"];
+        [self performSegueWithIdentifier:@"selectHotThought" sender:self];
     } else
     {
+        
         CBTSectionTableViewCell *nextTableViewCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:nextBarButtonItem.tag + 1 inSection:0]];
+        
         [nextTableViewCell.mainTextView becomeFirstResponder];
     }
 }
 -(void)dismissTextViewKeyboard
 {
     [self.view endEditing:YES];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.destinationViewController isKindOfClass:[HotThoughtSelectionTableViewController class]])
+    {
+        HotThoughtSelectionTableViewController *hotThoughtSelectionViewController = segue.destinationViewController;
+        hotThoughtSelectionViewController.automaticThoughts = automaticThoughts;
+        [hotThoughtSelectionViewController setDelegate:self];
+        self.navigationItem.title = @"";
+    }
 }
 
 #pragma mark - Data Methods
@@ -350,5 +375,19 @@
         NSLog(@"Couldn't save to Core Data");
     }
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - HotThoughtSelectionDelegate
+-(void)hotThoughtSelected:(NSString *)hotThought
+{
+    self.cbtSession.hotThought = hotThought;
+    [self.navigationController popViewControllerAnimated:YES];
+    CBTSectionTableViewCell *hotThoughtCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    [hotThoughtCell.mainTextView setText:hotThought];
+    [self.tableView reloadData];
+//    CBTSectionTableViewCell *automaticThoughtsCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+//    [automaticThoughtsCell.mainTextView resignFirstResponder];
+    CBTSectionTableViewCell *supportingEvidenceCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
+    [supportingEvidenceCell.mainTextView becomeFirstResponder];
 }
 @end

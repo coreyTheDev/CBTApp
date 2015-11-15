@@ -7,22 +7,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CBT_TABLEVIEW_CELL" rowHeight="240" id="KGk-i7-Jjw" customClass="CBTSectionTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="347" height="240"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CBT_TABLEVIEW_CELL" rowHeight="234" id="KGk-i7-Jjw" customClass="CBTSectionTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="234"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="347" height="240"/>
+                <rect key="frame" x="0.0" y="0.0" width="347" height="233.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HmC-ri-jIV">
-                        <rect key="frame" x="8" y="37" width="331" height="203"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HmC-ri-jIV">
+                        <rect key="frame" x="8" y="36.5" width="331" height="232"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="211.5" id="ctD-DZ-3ZV"/>
                         </constraints>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         <variation key="default">
                             <mask key="constraints">
@@ -30,10 +30,10 @@
                             </mask>
                         </variation>
                     </textView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automatic Thoughts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31i-8h-9ZO">
-                        <rect key="frame" x="8" y="8" width="339" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Automatic Thoughts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31i-8h-9ZO">
+                        <rect key="frame" x="8" y="8" width="339" height="20.5"/>
                         <animations/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -45,7 +45,7 @@
                     <constraint firstItem="HmC-ri-jIV" firstAttribute="leading" secondItem="31i-8h-9ZO" secondAttribute="leading" id="Fn6-zE-NR1"/>
                     <constraint firstItem="31i-8h-9ZO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Kj2-fE-yQ3"/>
                     <constraint firstItem="HmC-ri-jIV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="Rju-SF-iVN"/>
-                    <constraint firstItem="HmC-ri-jIV" firstAttribute="top" secondItem="31i-8h-9ZO" secondAttribute="bottom" constant="8" id="gsb-BS-Res"/>
+                    <constraint firstItem="HmC-ri-jIV" firstAttribute="top" secondItem="31i-8h-9ZO" secondAttribute="bottom" constant="4" id="gsb-BS-Res"/>
                     <constraint firstAttribute="bottomMargin" secondItem="HmC-ri-jIV" secondAttribute="bottom" constant="-8" id="gwr-Dd-248"/>
                     <constraint firstItem="HmC-ri-jIV" firstAttribute="trailing" secondItem="31i-8h-9ZO" secondAttribute="trailing" constant="-8" id="poa-9m-tqV"/>
                     <constraint firstItem="HmC-ri-jIV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="qji-hY-geg"/>
@@ -64,7 +64,7 @@
                 <outlet property="mainTextView" destination="HmC-ri-jIV" id="6v2-A8-WUT"/>
                 <outlet property="sectionLabel" destination="31i-8h-9ZO" id="cfF-KG-jFh"/>
             </connections>
-            <point key="canvasLocation" x="425.5" y="429"/>
+            <point key="canvasLocation" x="425.5" y="426"/>
         </tableViewCell>
     </objects>
 </document>

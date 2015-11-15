@@ -23,7 +23,9 @@
 		7A40C9A21BD26742000F08F4 /* CBTSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C99C1BD26742000F08F4 /* CBTSession.m */; };
 		7A40C9A31BD26742000F08F4 /* CBTBase+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C99E1BD26742000F08F4 /* CBTBase+CoreDataProperties.m */; };
 		7A40C9A41BD26742000F08F4 /* CBTBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A40C9A01BD26742000F08F4 /* CBTBase.m */; };
-		7A7A42471BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7A42451BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.m */; };
+		7AEB959C1BF9130A004BC946 /* HotThoughtSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB959B1BF9130A004BC946 /* HotThoughtSelectionTableViewController.m */; };
+		7AEB95A01BF91DE0004BC946 /* AutomaticThoughtTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB959E1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.m */; };
+		7AEB95A11BF91DE0004BC946 /* AutomaticThoughtTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AEB959F1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.xib */; };
 		E63982A9073352867B370CCB /* libPods-CBTApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6495BE8C74C65C8AC8182D0 /* libPods-CBTApp.a */; };
 /* End PBXBuildFile section */
 
@@ -76,8 +78,11 @@
 		7A40C99E1BD26742000F08F4 /* CBTBase+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBTBase+CoreDataProperties.m"; sourceTree = "<group>"; };
 		7A40C99F1BD26742000F08F4 /* CBTBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTBase.h; sourceTree = "<group>"; };
 		7A40C9A01BD26742000F08F4 /* CBTBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTBase.m; sourceTree = "<group>"; };
-		7A7A42441BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotThoughtSelectionViewController.h; sourceTree = "<group>"; };
-		7A7A42451BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotThoughtSelectionViewController.m; sourceTree = "<group>"; };
+		7AEB959A1BF9130A004BC946 /* HotThoughtSelectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotThoughtSelectionTableViewController.h; sourceTree = "<group>"; };
+		7AEB959B1BF9130A004BC946 /* HotThoughtSelectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotThoughtSelectionTableViewController.m; sourceTree = "<group>"; };
+		7AEB959D1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutomaticThoughtTableViewCell.h; sourceTree = "<group>"; };
+		7AEB959E1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutomaticThoughtTableViewCell.m; sourceTree = "<group>"; };
+		7AEB959F1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutomaticThoughtTableViewCell.xib; sourceTree = "<group>"; };
 		D6495BE8C74C65C8AC8182D0 /* libPods-CBTApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CBTApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEFA3E7007140FBCB11A144 /* Pods-CBTApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBTApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CBTApp/Pods-CBTApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +127,9 @@
 				7A2E3BEA1BDF99A2006BD8D3 /* CBTSectionTableViewCell.h */,
 				7A2E3BEB1BDF99A2006BD8D3 /* CBTSectionTableViewCell.m */,
 				7A2E3BEC1BDF99A2006BD8D3 /* CBTSectionTableViewCell.xib */,
+				7AEB959D1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.h */,
+				7AEB959E1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.m */,
+				7AEB959F1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.xib */,
 			);
 			name = "TableView Cells";
 			sourceTree = "<group>";
@@ -213,8 +221,8 @@
 				7A40C98C1BD263BD000F08F4 /* CBTListTableViewController.m */,
 				7A40C9951BD26590000F08F4 /* CBTSessionViewController.h */,
 				7A40C9961BD26590000F08F4 /* CBTSessionViewController.m */,
-				7A7A42441BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.h */,
-				7A7A42451BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.m */,
+				7AEB959A1BF9130A004BC946 /* HotThoughtSelectionTableViewController.h */,
+				7AEB959B1BF9130A004BC946 /* HotThoughtSelectionTableViewController.m */,
 				7A2E3BE91BDF9982006BD8D3 /* TableView Cells */,
 			);
 			name = "UI ";
@@ -337,6 +345,7 @@
 			files = (
 				7A40C9651BD26329000F08F4 /* LaunchScreen.storyboard in Resources */,
 				7A2E3BEE1BDF99A2006BD8D3 /* CBTSectionTableViewCell.xib in Resources */,
+				7AEB95A11BF91DE0004BC946 /* AutomaticThoughtTableViewCell.xib in Resources */,
 				7A40C9621BD26329000F08F4 /* Assets.xcassets in Resources */,
 				7A40C95D1BD26329000F08F4 /* Main.storyboard in Resources */,
 			);
@@ -418,8 +427,9 @@
 				7A40C9A41BD26742000F08F4 /* CBTBase.m in Sources */,
 				7A40C9A11BD26742000F08F4 /* CBTSession+CoreDataProperties.m in Sources */,
 				7A40C9571BD26329000F08F4 /* AppDelegate.m in Sources */,
+				7AEB95A01BF91DE0004BC946 /* AutomaticThoughtTableViewCell.m in Sources */,
+				7AEB959C1BF9130A004BC946 /* HotThoughtSelectionTableViewController.m in Sources */,
 				7A40C9541BD26329000F08F4 /* main.m in Sources */,
-				7A7A42471BEEEEDB00DF24E1 /* HotThoughtSelectionViewController.m in Sources */,
 				7A40C9A31BD26742000F08F4 /* CBTBase+CoreDataProperties.m in Sources */,
 				7A40C98D1BD263BD000F08F4 /* CBTListTableViewController.m in Sources */,
 			);
