@@ -11,6 +11,7 @@
 #import "CBTSessionViewController.h"
 #import "AppDelegate.h"
 #import "UIColor+CBTApp.h"
+#import "CBTListTableViewCell.h"
 
 #define CBT_TABLEVIEW_CELL @"CBT_TABLEVIEW_CELL"
 
@@ -40,6 +41,8 @@
     [self.navigationItem setTitle:@"C.B.T. Sessions"];
     [self populateListOfCBTSessions];
     [self.tableView reloadData];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CBTListTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:TABLEVIEW_CELL_CBT_LIST_MAIN];
     self.navigationController.navigationBar.barTintColor = [UIColor cbtLightGreen];
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
@@ -97,12 +100,14 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CBT_TABLEVIEW_CELL forIndexPath:indexPath];
+    CBTListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLEVIEW_CELL_CBT_LIST_MAIN forIndexPath:indexPath];
 
     CBTBase *cbtSessionForThisCell = [self.listOfCBTSessions objectAtIndex:indexPath.row];
     
-    [cell.textLabel setText:cbtSessionForThisCell.name];
-    [cell.detailTextLabel setText:[self.dateFormatterForCBTSessions stringFromDate:cbtSessionForThisCell.date]];
+    //Setting up appearance of cells
+    [cell.titleLabel setText:cbtSessionForThisCell.name];
+    [cell.dateLabel setText:[self.dateFormatterForCBTSessions stringFromDate:cbtSessionForThisCell.date]];
+    
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,6 +121,18 @@
     [self performSegueWithIdentifier:@"existingSessionViewController" sender:self];
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+-(NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"DELETE" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+        [self deleteItemAtIndexPath:indexPath];
+    }];
+    
+    return [[NSArray alloc]initWithObjects:deleteAction, nil];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -180,6 +197,11 @@
             cbtSessionViewController.cbtSession = [results lastObject];
         }
     }
+}
+
+-(void)deleteItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 @end

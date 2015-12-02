@@ -147,7 +147,6 @@
     return 1;
 }
 
-
 #pragma mark - UITextViewDelegate Methods
 /*
  Logic for determining the touch event for the "hot thought"
