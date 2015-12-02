@@ -9,6 +9,8 @@
 #import "CBTListTableViewController.h"
 #import "CBTBase.h"
 #import "CBTSessionViewController.h"
+#import "AppDelegate.h"
+#import "UIColor+CBTApp.h"
 
 #define CBT_TABLEVIEW_CELL @"CBT_TABLEVIEW_CELL"
 
@@ -23,6 +25,7 @@
 @implementation CBTListTableViewController
 {
     CBTBase *selectedSession;
+    NSArray *colorArray;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +40,9 @@
     [self.navigationItem setTitle:@"C.B.T. Sessions"];
     [self populateListOfCBTSessions];
     [self.tableView reloadData];
+    self.navigationController.navigationBar.barTintColor = [UIColor cbtLightGreen];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning {

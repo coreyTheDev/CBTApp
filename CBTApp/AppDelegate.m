@@ -5,9 +5,11 @@
 //  Created by Corey Zanotti on 10/17/15.
 //  Copyright © 2015 Corey Zanotti. All rights reserved.
 //
+// Icon Credits: Back Icon, Delete ICon - Icon made by Freepik from www.flaticon.com available under the Creative Commons BY 3.0
 
 #import "AppDelegate.h"
 #import "CBTListTableViewController.h"
+#import "Chameleon.h"
 
 @interface AppDelegate ()
 
@@ -53,6 +55,8 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
+
 
 #pragma mark - Core Data stack
 
@@ -133,5 +137,4 @@
         }
     }
 }
-
 @end

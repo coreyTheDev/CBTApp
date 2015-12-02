@@ -26,6 +26,7 @@
 		7AEB959C1BF9130A004BC946 /* HotThoughtSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB959B1BF9130A004BC946 /* HotThoughtSelectionTableViewController.m */; };
 		7AEB95A01BF91DE0004BC946 /* AutomaticThoughtTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB959E1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.m */; };
 		7AEB95A11BF91DE0004BC946 /* AutomaticThoughtTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AEB959F1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.xib */; };
+		7AF48F731C0F165700B0B525 /* UIColor+CBTApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF48F721C0F165700B0B525 /* UIColor+CBTApp.m */; };
 		E63982A9073352867B370CCB /* libPods-CBTApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6495BE8C74C65C8AC8182D0 /* libPods-CBTApp.a */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,8 @@
 		7AEB959D1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutomaticThoughtTableViewCell.h; sourceTree = "<group>"; };
 		7AEB959E1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutomaticThoughtTableViewCell.m; sourceTree = "<group>"; };
 		7AEB959F1BF91DE0004BC946 /* AutomaticThoughtTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutomaticThoughtTableViewCell.xib; sourceTree = "<group>"; };
+		7AF48F711C0F165700B0B525 /* UIColor+CBTApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CBTApp.h"; sourceTree = "<group>"; };
+		7AF48F721C0F165700B0B525 /* UIColor+CBTApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CBTApp.m"; sourceTree = "<group>"; };
 		D6495BE8C74C65C8AC8182D0 /* libPods-CBTApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CBTApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCEFA3E7007140FBCB11A144 /* Pods-CBTApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CBTApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CBTApp/Pods-CBTApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +165,8 @@
 				7A40C95B1BD26329000F08F4 /* Main.storyboard */,
 				7A40C9551BD26329000F08F4 /* AppDelegate.h */,
 				7A40C9561BD26329000F08F4 /* AppDelegate.m */,
+				7AF48F711C0F165700B0B525 /* UIColor+CBTApp.h */,
+				7AF48F721C0F165700B0B525 /* UIColor+CBTApp.m */,
 				7A40C9941BD26531000F08F4 /* Data Model */,
 				7A40C9981BD2663B000F08F4 /* UI  */,
 				7A40C9611BD26329000F08F4 /* Assets.xcassets */,
@@ -425,6 +430,7 @@
 				7A40C9971BD26590000F08F4 /* CBTSessionViewController.m in Sources */,
 				7A40C9A21BD26742000F08F4 /* CBTSession.m in Sources */,
 				7A40C9A41BD26742000F08F4 /* CBTBase.m in Sources */,
+				7AF48F731C0F165700B0B525 /* UIColor+CBTApp.m in Sources */,
 				7A40C9A11BD26742000F08F4 /* CBTSession+CoreDataProperties.m in Sources */,
 				7A40C9571BD26329000F08F4 /* AppDelegate.m in Sources */,
 				7AEB95A01BF91DE0004BC946 /* AutomaticThoughtTableViewCell.m in Sources */,
