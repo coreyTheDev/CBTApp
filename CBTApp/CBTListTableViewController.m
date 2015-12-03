@@ -18,7 +18,7 @@
 #define HEIGHT_OF_TABLEVIEW_CELL 55.0
 
 @interface CBTListTableViewController ()
-@property (strong, nonatomic) NSArray *listOfCBTSessions;
+@property (strong, nonatomic) NSMutableArray *listOfCBTSessions;
 @property (strong, nonatomic) NSDateFormatter *dateFormatterForCBTSessions;
 -(void)populateListOfCBTSessions;
 @end
@@ -43,6 +43,8 @@
     [self.tableView reloadData];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView registerNib:[UINib nibWithNibName:@"CBTListTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:TABLEVIEW_CELL_CBT_LIST_MAIN];
+    [self.tableView setBackgroundColor:[UIColor cbtDarkGay]];
+    
     self.navigationController.navigationBar.barTintColor = [UIColor cbtLightGreen];
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
@@ -77,7 +79,7 @@
     
     //fetch items
     NSError *fetchError = nil;
-    self.listOfCBTSessions = [self.managedContext executeFetchRequest:requestForCBTSessions error:&fetchError];
+    self.listOfCBTSessions = [[self.managedContext executeFetchRequest:requestForCBTSessions error:&fetchError] mutableCopy];
     
     if (fetchError)
     {
@@ -87,6 +89,9 @@
     //realod data
     [self.tableView reloadData];
 }
+
+
+
 
 #pragma mark - Table view data source
 
@@ -130,7 +135,7 @@
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"DELETE" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         [self deleteItemAtIndexPath:indexPath];
     }];
-    
+    deleteAction.backgroundColor = [UIColor cbtRed];
     return [[NSArray alloc]initWithObjects:deleteAction, nil];
 }
 /*
@@ -201,7 +206,33 @@
 
 -(void)deleteItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CBTSession *selectionToDelete = [self.listOfCBTSessions objectAtIndex:indexPath.row];
+    NSFetchRequest *requestForCurrentSession = [NSFetchRequest fetchRequestWithEntityName:@"CBTSession"];
+    NSPredicate *predicateForCurrentSession = [NSPredicate predicateWithFormat:@"date == %@",selectionToDelete.date];
+    [requestForCurrentSession setPredicate:predicateForCurrentSession];
     
+    NSError *fetchError;
+    NSArray *results;
+    results = [self.managedContext executeFetchRequest:requestForCurrentSession error:&fetchError];
+    
+    if (fetchError)
+    {
+        NSLog(@"Couldn't find corresponding session");
+    }
+    else if (results.count > 0)
+    {
+        [self.managedContext deleteObject:[results lastObject]];
+        [self.listOfCBTSessions removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        [self.tableView reloadData];
+    }
+    NSError *savingError;
+    [self.managedContext save:&savingError];
+    if (savingError)
+    {
+        NSLog(@"Couldn't save deletion");
+    }
+
 }
 
 @end

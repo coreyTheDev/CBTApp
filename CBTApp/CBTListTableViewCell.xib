@@ -16,8 +16,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Vw-4Z-yfz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the title of a CBT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kq-B2-ajs">
-                                <rect key="frame" x="11" y="8" width="178.5" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the title of a CBT Session that means so much to me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kq-B2-ajs">
+                                <rect key="frame" x="11" y="8" width="324" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="t8z-Iu-Orw"/>
@@ -52,7 +52,10 @@
                             <constraint firstItem="IaB-pJ-Sba" firstAttribute="top" secondItem="0Kq-B2-ajs" secondAttribute="bottom" constant="1" id="8YH-Jl-YD5"/>
                             <constraint firstAttribute="bottom" secondItem="IaB-pJ-Sba" secondAttribute="bottom" constant="1" id="9Mz-I1-p7L"/>
                             <constraint firstItem="IaB-pJ-Sba" firstAttribute="leading" secondItem="9Vw-4Z-yfz" secondAttribute="leading" constant="11" id="Byv-aU-stN"/>
+                            <constraint firstAttribute="trailing" secondItem="0Kq-B2-ajs" secondAttribute="trailing" constant="40" id="TBV-YR-GDV"/>
                             <constraint firstItem="0Kq-B2-ajs" firstAttribute="leading" secondItem="9Vw-4Z-yfz" secondAttribute="leading" constant="11" id="Ye6-5e-Sl0"/>
+                            <constraint firstItem="kvX-nQ-zfP" firstAttribute="leading" relation="lessThanOrEqual" secondItem="0Kq-B2-ajs" secondAttribute="trailing" constant="8" id="ZT0-6A-eYQ"/>
+                            <constraint firstItem="0Kq-B2-ajs" firstAttribute="width" relation="lessThanOrEqual" secondItem="9Vw-4Z-yfz" secondAttribute="width" constant="20" id="n9o-BS-cSG"/>
                             <constraint firstItem="kvX-nQ-zfP" firstAttribute="centerY" secondItem="9Vw-4Z-yfz" secondAttribute="centerY" id="oiI-hp-JFA"/>
                             <constraint firstAttribute="trailing" secondItem="kvX-nQ-zfP" secondAttribute="trailing" constant="11" id="pRO-RB-OOu"/>
                             <constraint firstItem="0Kq-B2-ajs" firstAttribute="top" secondItem="9Vw-4Z-yfz" secondAttribute="top" constant="8" id="w83-a8-SBG"/>
@@ -60,11 +63,13 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="9Mz-I1-p7L"/>
+                                <exclude reference="ZT0-6A-eYQ"/>
                             </mask>
                         </variation>
                     </view>
                 </subviews>
                 <animations/>
+                <color key="backgroundColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="9Vw-4Z-yfz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6mR-au-IkI"/>
                     <constraint firstAttribute="bottom" secondItem="9Vw-4Z-yfz" secondAttribute="bottom" constant="1" id="MHV-be-HAS"/>

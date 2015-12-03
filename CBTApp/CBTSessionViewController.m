@@ -45,6 +45,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"CBTSectionTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:CBT_TABLEVIEW_CELL];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 110;
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     temporaryAutomaticThoughtString = @"";
     inHotThoughtSelection = NO;
@@ -148,85 +149,9 @@
 }
 
 #pragma mark - UITextViewDelegate Methods
-/*
- Logic for determining the touch event for the "hot thought"
- 1. if we're just now selecting the automatic thoughts from the hot thought text view
- 2. then we grab the selected range in the text view's text, which should be an insertion point
- 3.
- */
--(void)textViewDidChangeSelection:(UITextView *)textView
-{
-    /*
-    if (inHotThoughtSelection && textView.tag == 2)
-    {
-        NSArray *automaticThoughts=[textView.text componentsSeparatedByString:@"\n"];
-        UITextRange *selectedRange = textView.selectedTextRange;
-        NSInteger selectedIndex = [textView offsetFromPosition:textView.beginningOfDocument toPosition:selectedRange.start];
-        NSInteger currentLocationInTextView = 0;
-        UIFont *fontForString = [UIFont fontWithName:@"HelveticaNeue" size:14];
-        NSDictionary *attributeDictionary = [NSDictionary dictionaryWithObject:fontForString forKey:NSFontAttributeName];
-        NSMutableAttributedString *attributedThoughtListString = [[NSMutableAttributedString alloc]initWithString:textView.text attributes:attributeDictionary];
-        for (NSString *thought in automaticThoughts)
-        {
-            if ((currentLocationInTextView += thought.length) > selectedIndex)
-            {
-                NSRange rangeOfThought = [textView.text rangeOfString:thought];
-                UIFont *fontForString = [UIFont fontWithName:@"HelveticaNeue" size:14];
-                NSDictionary *attributeDictionary = [NSDictionary dictionaryWithObjects:@[fontForString,[UIColor redColor]] forKeys:@[NSFontAttributeName,NSForegroundColorAttributeName]];
-                [attributedThoughtListString addAttributes:attributeDictionary range:rangeOfThought];
-                inHotThoughtSelection = NO;
-                [textView setAttributedText:attributedThoughtListString];
-                
-                //give string to proper cell
-                CBTSectionTableViewCell *hotThoughtCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
-                [hotThoughtCell.mainTextView setText:thought];
-                break;
-            }
-            else
-                currentLocationInTextView += thought.length;
-        }
-        //        selectedRange.length += 10;
-        /*
-         - (IBAction)colorWord:(id)sender {
-         NSMutableAttributedString * string = [[NSMutableAttributedString alloc]initWithString:self.text.text];
-         
-         NSArray *words=[self.text.text componentsSeparatedByString:@" "];
-         
-         for (NSString *word in words) {
-         if ([word hasPrefix:@"@"]) {
-         NSRange range=[self.text.text rangeOfString:word];
-         [string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:range];
-         }
-         }
-         [self.text setAttributedText:string];
-         }
-    }*/
-}
+
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    /*if (inHotThoughtSelection && textView.tag == 2)
-    {
-        /*
-        UITextRange *selectedRange = textView.selectedTextRange;
-        NSInteger selectedIndex = [textView offsetFromPosition:textView.beginningOfDocument toPosition:selectedRange.start];
-        NSInteger currentLocationInTextView = 0;
-        NSMutableAttributedString *attributedThoughtListString = [[NSMutableAttributedString alloc]initWithString:textView.text];
-        for (NSString *thought in automaticThoughts)
-        {
-            if ((currentLocationInTextView += thought.length) > selectedIndex)
-            {
-                NSRange rangeOfThought = [textView.text rangeOfString:thought];
-                [attributedThoughtListString addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:rangeOfThought];
-                inHotThoughtSelection = NO;
-                [textView setAttributedText:attributedThoughtListString];
-                return NO;
-            }
-            else
-                currentLocationInTextView += thought.length;
-        }
-        return NO;
-    }*/
-    
     if ([textView.text isEqualToString:PLACEHOLDER_TEXT_POST_MOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_ALTERNATIVE_THOUGHT] || [textView.text isEqualToString:PLACEHOLDER_TEXT_AUTOMATIC_THOUGHTS] || [textView.text isEqualToString:PLACEHOLDER_TEXT_EVIDENCE_AGAINST] || [textView.text isEqualToString:PLACEHOLDER_TEXT_PREMOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SITUATION] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SUPPORTING_EVIDENCE])
     {
         textView.text = textView.tag == 0?@"":UNICODE_BULLET;
@@ -246,7 +171,24 @@
                              nextItem,
                              nil];
     [keyboardToolbar sizeToFit];
-    
+    switch (textView.tag) {
+        case 0:
+        case 3:
+            textView.returnKeyType = UIReturnKeyNext;
+            break;
+        case 1:
+        case 2:
+        case 4:
+        case 5:
+        case 6:
+            textView.returnKeyType = UIReturnKeyDefault;
+            break;
+        case 7:
+            textView.returnKeyType = UIReturnKeyDone;
+            break;
+        default:
+            break;
+    }
     textView.inputAccessoryView = keyboardToolbar;
     
     sizeOfActiveTextView = textView.text.length;

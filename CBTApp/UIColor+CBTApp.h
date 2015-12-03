@@ -12,4 +12,5 @@
 +(UIColor *)cbtRed;
 +(UIColor *)cbtLightGreen;
 +(UIColor *)cbtGray;
++(UIColor *)cbtDarkGay;
 @end

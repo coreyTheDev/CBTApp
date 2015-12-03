@@ -21,4 +21,8 @@
 {
     return [UIColor colorWithRed:232/255.0 green:230/255.0 blue:226/255.0 alpha:1.0];
 }
++(UIColor *)cbtDarkGay
+{
+    return [UIColor colorWithRed:72/255. green:72/255. blue:71/255. alpha:1.0];
+}
 @end
