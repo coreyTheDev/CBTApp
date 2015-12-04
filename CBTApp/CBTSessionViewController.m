@@ -200,10 +200,22 @@
 }
 -(void)textViewDidChange:(UITextView *)textView
 {
-    
+    //if a newline character is in the first section remove it and jump to the next section
+    if ([textView.text characterAtIndex:textView.text.length-1] == '\n' && textView.tag == 0)
+    {
+        [self setString:[textView.text substringWithRange:NSMakeRange(0, textView.text.length - 2)] forCBTSection:textView.tag];
+        textView.text = [textView.text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        CBTSectionTableViewCell *nextTableViewCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:textView.tag + 1 inSection:0]];
+        
+        [nextTableViewCell.mainTextView becomeFirstResponder];
+        
+        return;
+
+    }
     CGSize size = textView.bounds.size;
     CGSize newSize = [textView sizeThatFits:CGSizeMake(size.width, CGFLOAT_MAX)];
     
+    //This block of code will adjust the scroll position of the uitableview
     CGFloat ceilingOfHeight = ceilf(size.height);
     CGFloat ceilingOfNewHeight = ceilf(newSize.height);
     if (ceilingOfHeight != ceilingOfNewHeight){
@@ -234,16 +246,25 @@
     sizeOfActiveTextView = textView.text.length;
 }
 
+-(BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
 #pragma mark - UI Methods
+//This method is called when the next button is pressed on the keyboard toolbar
 -(void)moveToNextItem:(UIBarButtonItem *)nextBarButtonItem
 {
     CBTSectionTableViewCell *thisTableViewCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:nextBarButtonItem.tag inSection:0]];
+    
+    //save the string to the cbt core data model
     [self setString:thisTableViewCell.mainTextView.text forCBTSection:nextBarButtonItem.tag];
     
+    //end editing if we're at the end of the list of textviews determined by the tag
     if (nextBarButtonItem.tag + 1 == NUMBER_OF_CBT_FIELDS)
     {
         [self.view endEditing:YES];
-    } else if (nextBarButtonItem.tag == 2)
+    } else if (nextBarButtonItem.tag == 2)//launch the automatic thought selection screen if we're at indexTag == 2
     {
         automaticThoughts = [thisTableViewCell.mainTextView.text componentsSeparatedByString:@"\n"];
         [self performSegueWithIdentifier:@"selectHotThought" sender:self];

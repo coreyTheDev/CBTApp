@@ -4,7 +4,6 @@
 # use_frameworks!
 
 target 'CBTApp' do
-pod 'ChameleonFramework'
 end
 
 target 'CBTAppTests' do

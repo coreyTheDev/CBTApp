@@ -29,7 +29,6 @@
 		7AF48F731C0F165700B0B525 /* UIColor+CBTApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF48F721C0F165700B0B525 /* UIColor+CBTApp.m */; };
 		7AF48F771C0F1F5300B0B525 /* CBTListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF48F751C0F1F5300B0B525 /* CBTListTableViewCell.m */; };
 		7AF48F781C0F1F5300B0B525 /* CBTListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AF48F761C0F1F5300B0B525 /* CBTListTableViewCell.xib */; };
-		E63982A9073352867B370CCB /* libPods-CBTApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6495BE8C74C65C8AC8182D0 /* libPods-CBTApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,7 +99,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E63982A9073352867B370CCB /* libPods-CBTApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +392,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "";
 			showEnvVarsInLog = 0;
 		};
 		5F61867C5FFBCE85C6F63281 /* Embed Pods Frameworks */ = {
@@ -409,7 +407,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CBTApp/Pods-CBTApp-frameworks.sh\"\n";
+			shellScript = "
+";
 			showEnvVarsInLog = 0;
 		};
 		89B33CDD3C99AC36BCBC0884 /* Copy Pods Resources */ = {
@@ -424,7 +423,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CBTApp/Pods-CBTApp-resources.sh\"\n";
+			shellScript = "
+";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -584,7 +584,6 @@
 		};
 		7A40C9801BD26329000F08F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38F4496FB22944B54D00509A /* Pods-CBTApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CBTApp/Info.plist;
@@ -596,7 +595,6 @@
 		};
 		7A40C9811BD26329000F08F4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCEFA3E7007140FBCB11A144 /* Pods-CBTApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CBTApp/Info.plist;
