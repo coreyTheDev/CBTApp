@@ -154,23 +154,30 @@
 {
     if ([textView.text isEqualToString:PLACEHOLDER_TEXT_POST_MOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_ALTERNATIVE_THOUGHT] || [textView.text isEqualToString:PLACEHOLDER_TEXT_AUTOMATIC_THOUGHTS] || [textView.text isEqualToString:PLACEHOLDER_TEXT_EVIDENCE_AGAINST] || [textView.text isEqualToString:PLACEHOLDER_TEXT_PREMOOD] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SITUATION] || [textView.text isEqualToString:PLACEHOLDER_TEXT_SUPPORTING_EVIDENCE])
     {
-        textView.text = textView.tag == 0?@"":UNICODE_BULLET;
+        textView.text = textView.tag == 0?@"":[NSString stringWithFormat:@"%@ ",UNICODE_BULLET];
     }
     if (textView.tag == 3)
     {
         inHotThoughtSelection = YES;
     }
-    
-    UIToolbar* keyboardToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-    keyboardToolbar.barStyle = UIBarStyleDefault;
-    UIBarButtonItem *nextItem = [[UIBarButtonItem alloc]initWithTitle:textView.tag+1>=NUMBER_OF_CBT_FIELDS?@"Done":@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(moveToNextItem:)];
-    nextItem.tag = textView.tag;
-    keyboardToolbar.items = [NSArray arrayWithObjects:
-                             [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissTextViewKeyboard)],
-                             [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                             nextItem,
-                             nil];
-    [keyboardToolbar sizeToFit];
+    if (textView.tag != 0)
+    {
+        UIToolbar* keyboardToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
+        UIBarButtonItem *nextItem = [[UIBarButtonItem alloc]initWithTitle:textView.tag+1>=NUMBER_OF_CBT_FIELDS?@"Done":@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(moveToNextItem:)];
+        nextItem.tag = textView.tag;
+        nextItem.tintColor = [UIColor whiteColor];
+        
+        UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(dismissTextViewKeyboard)];
+        cancelItem.tintColor = [UIColor whiteColor];
+        keyboardToolbar.items = [NSArray arrayWithObjects:cancelItem
+                                 ,
+                                 [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                                 nextItem,
+                                 nil];
+        [keyboardToolbar sizeToFit];
+        textView.inputAccessoryView = keyboardToolbar;
+    }
     switch (textView.tag) {
         case 0:
         case 3:
@@ -189,7 +196,6 @@
         default:
             break;
     }
-    textView.inputAccessoryView = keyboardToolbar;
     
     sizeOfActiveTextView = textView.text.length;
     return YES;
@@ -203,7 +209,10 @@
     //if a newline character is in the first section remove it and jump to the next section
     if ([textView.text characterAtIndex:textView.text.length-1] == '\n' && textView.tag == 0)
     {
-        [self setString:[textView.text substringWithRange:NSMakeRange(0, textView.text.length - 2)] forCBTSection:textView.tag];
+        //save the string if the text contains anything
+        if (textView.text.length > 1)
+            [self setString:[textView.text substringWithRange:NSMakeRange(0, textView.text.length - 2)] forCBTSection:textView.tag];
+        
         textView.text = [textView.text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
         CBTSectionTableViewCell *nextTableViewCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:textView.tag + 1 inSection:0]];
         
@@ -327,6 +336,18 @@
 
 -(void)saveDataToContextAndDismissView
 {
+    //Attempt to save any existing keyboard input before exiting view
+    for (int i = 0; i < NUMBER_OF_CBT_FIELDS; i++)
+    {
+        CBTSectionTableViewCell *cbtSectionCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+        if ([cbtSectionCell.mainTextView isFirstResponder])
+        {
+            [self setString:cbtSectionCell.mainTextView.text forCBTSection:i];
+            break;
+        }
+    }
+    
+    
     self.cbtSession.name = self.cbtSession.situation;
     
     NSError *savingError;
