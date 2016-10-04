@@ -32,6 +32,7 @@
 @implementation CBTSessionViewController
 {
     NSInteger sizeOfActiveTextView;
+    //temporaryAutomaticThoughtString is used to keep track of the current automatic thought being entered and save it to the array when a new line is pressed.
     NSString *temporaryAutomaticThoughtString;
     BOOL inHotThoughtSelection;
     NSArray *automaticThoughts;
@@ -200,6 +201,17 @@
     sizeOfActiveTextView = textView.text.length;
     return YES;
 }
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    //if the user is trying to delete the first bullet point return NO, but not for the situation section
+    if (textView.tag > 0)
+    {
+        if (range.location < 2)
+            return NO;
+    }
+    
+    return YES;
+}
 -(BOOL)textViewShouldEndEditing:(UITextView *)textView
 {
     return YES;
@@ -221,10 +233,11 @@
         return;
 
     }
+    
+    //This block of code will adjust the scroll position of the uitableview
     CGSize size = textView.bounds.size;
     CGSize newSize = [textView sizeThatFits:CGSizeMake(size.width, CGFLOAT_MAX)];
     
-    //This block of code will adjust the scroll position of the uitableview
     CGFloat ceilingOfHeight = ceilf(size.height);
     CGFloat ceilingOfNewHeight = ceilf(newSize.height);
     if (ceilingOfHeight != ceilingOfNewHeight){
@@ -235,6 +248,17 @@
         
         NSIndexPath *indexPathForThisCell = [NSIndexPath indexPathForRow:textView.tag inSection:0];
         [self.tableView scrollToRowAtIndexPath:indexPathForThisCell atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
+    
+    //This code block will delete the unicode bullet and new line character for every line except the first
+    if ([textView.text hasSuffix:UNICODE_BULLET])
+    {
+        if (textView.text.length > 2)
+        {
+            NSString *textViewText = textView.text;
+            textViewText = [textViewText stringByReplacingCharactersInRange:NSMakeRange(textViewText.length -2, 2) withString:@""];
+            textView.text = textViewText;
+        }
     }
     
     //this line of code detects a new line character thats been added to the textview opposed to one thats encountered because of a deletion.

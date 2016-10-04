@@ -19,7 +19,7 @@
 }
 +(UIColor *)cbtGray
 {
-    return [UIColor colorWithRed:232/255.0 green:230/255.0 blue:226/255.0 alpha:1.0];
+    return [UIColor colorWithRed:225/255.0 green:231/255.0 blue:242/255.0 alpha:1.0];
 }
 +(UIColor *)cbtDarkGay
 {

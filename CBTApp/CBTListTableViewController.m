@@ -31,9 +31,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.clearsSelectionOnViewWillAppear = NO;
-    
     [self populateListOfCBTSessions];
+    if (self.listOfCBTSessions.count == 0) {
+        self.emptyContainerView.hidden = NO;
+    } else {
+        self.emptyContainerView.hidden = YES;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -41,19 +44,20 @@
     [self.navigationItem setTitle:@"C.B.T. Sessions"];
     [self populateListOfCBTSessions];
     [self.tableView reloadData];
+    
+    if (self.listOfCBTSessions.count == 0) {
+        self.emptyContainerView.hidden = NO;
+    } else {
+        self.emptyContainerView.hidden = YES;
+    }
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView registerNib:[UINib nibWithNibName:@"CBTListTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:TABLEVIEW_CELL_CBT_LIST_MAIN];
-    [self.tableView setBackgroundColor:[UIColor cbtDarkGay]];
     
     self.navigationController.navigationBar.barTintColor = [UIColor cbtLightGreen];
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Property Methods and Class Functions
 -(NSDateFormatter *)dateFormatterForCBTSessions
@@ -88,6 +92,12 @@
     
     //realod data
     [self.tableView reloadData];
+    
+    if (self.listOfCBTSessions.count == 0) {
+        self.emptyContainerView.hidden = NO;
+    } else {
+        self.emptyContainerView.hidden = YES;
+    }
 }
 
 
@@ -225,6 +235,12 @@
         [self.listOfCBTSessions removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
         [self.tableView reloadData];
+        
+        if (self.listOfCBTSessions.count == 0) {
+            self.emptyContainerView.hidden = NO;
+        } else {
+            self.emptyContainerView.hidden = YES;
+        }
     }
     NSError *savingError;
     [self.managedContext save:&savingError];

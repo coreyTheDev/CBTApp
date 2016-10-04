@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CBTListTableViewController : UITableViewController
+@interface CBTListTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) NSManagedObjectContext *managedContext;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *emptyContainerView;
 @end
