@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:CBTApp.xcodeproj">
+      location = "self:/Users/coreyzanotti/Documents/Development Stuff/Personal/CBTApp/Simmer.xcodeproj">
    </FileRef>
 </Workspace>

@@ -54,7 +54,7 @@
 		7A2E3BEA1BDF99A2006BD8D3 /* CBTSectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTSectionTableViewCell.h; sourceTree = "<group>"; };
 		7A2E3BEB1BDF99A2006BD8D3 /* CBTSectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTSectionTableViewCell.m; sourceTree = "<group>"; };
 		7A2E3BEC1BDF99A2006BD8D3 /* CBTSectionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBTSectionTableViewCell.xib; sourceTree = "<group>"; };
-		7A40C94F1BD26329000F08F4 /* CBTApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CBTApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A40C94F1BD26329000F08F4 /* Simmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A40C9531BD26329000F08F4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A40C9551BD26329000F08F4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A40C9561BD26329000F08F4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -63,10 +63,10 @@
 		7A40C9611BD26329000F08F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A40C9641BD26329000F08F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A40C9661BD26329000F08F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A40C96B1BD26329000F08F4 /* CBTAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CBTAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A40C96B1BD26329000F08F4 /* Simmer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Simmer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A40C96F1BD26329000F08F4 /* CBTAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBTAppTests.m; sourceTree = "<group>"; };
 		7A40C9711BD26329000F08F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A40C9761BD26329000F08F4 /* CBTAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CBTAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A40C9761BD26329000F08F4 /* Simmer.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Simmer.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A40C97A1BD26329000F08F4 /* CBTAppUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBTAppUITests.m; sourceTree = "<group>"; };
 		7A40C97C1BD26329000F08F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A40C98B1BD263BD000F08F4 /* CBTListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTListTableViewController.h; sourceTree = "<group>"; };
@@ -158,9 +158,9 @@
 		7A40C9501BD26329000F08F4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7A40C94F1BD26329000F08F4 /* CBTApp.app */,
-				7A40C96B1BD26329000F08F4 /* CBTAppTests.xctest */,
-				7A40C9761BD26329000F08F4 /* CBTAppUITests.xctest */,
+				7A40C94F1BD26329000F08F4 /* Simmer.app */,
+				7A40C96B1BD26329000F08F4 /* Simmer.xctest */,
+				7A40C9761BD26329000F08F4 /* Simmer.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -251,9 +251,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7A40C94E1BD26329000F08F4 /* CBTApp */ = {
+		7A40C94E1BD26329000F08F4 /* Simmer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7A40C97F1BD26329000F08F4 /* Build configuration list for PBXNativeTarget "CBTApp" */;
+			buildConfigurationList = 7A40C97F1BD26329000F08F4 /* Build configuration list for PBXNativeTarget "Simmer" */;
 			buildPhases = (
 				594F69A4E85FA2983549ADF9 /* Check Pods Manifest.lock */,
 				7A40C94B1BD26329000F08F4 /* Sources */,
@@ -266,14 +266,14 @@
 			);
 			dependencies = (
 			);
-			name = CBTApp;
+			name = Simmer;
 			productName = CBTApp;
-			productReference = 7A40C94F1BD26329000F08F4 /* CBTApp.app */;
+			productReference = 7A40C94F1BD26329000F08F4 /* Simmer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7A40C96A1BD26329000F08F4 /* CBTAppTests */ = {
+		7A40C96A1BD26329000F08F4 /* SimmerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7A40C9821BD26329000F08F4 /* Build configuration list for PBXNativeTarget "CBTAppTests" */;
+			buildConfigurationList = 7A40C9821BD26329000F08F4 /* Build configuration list for PBXNativeTarget "SimmerTests" */;
 			buildPhases = (
 				7A40C9671BD26329000F08F4 /* Sources */,
 				7A40C9681BD26329000F08F4 /* Frameworks */,
@@ -284,14 +284,14 @@
 			dependencies = (
 				7A40C96D1BD26329000F08F4 /* PBXTargetDependency */,
 			);
-			name = CBTAppTests;
+			name = SimmerTests;
 			productName = CBTAppTests;
-			productReference = 7A40C96B1BD26329000F08F4 /* CBTAppTests.xctest */;
+			productReference = 7A40C96B1BD26329000F08F4 /* Simmer.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7A40C9751BD26329000F08F4 /* CBTAppUITests */ = {
+		7A40C9751BD26329000F08F4 /* SimmerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7A40C9851BD26329000F08F4 /* Build configuration list for PBXNativeTarget "CBTAppUITests" */;
+			buildConfigurationList = 7A40C9851BD26329000F08F4 /* Build configuration list for PBXNativeTarget "SimmerUITests" */;
 			buildPhases = (
 				7A40C9721BD26329000F08F4 /* Sources */,
 				7A40C9731BD26329000F08F4 /* Frameworks */,
@@ -302,9 +302,9 @@
 			dependencies = (
 				7A40C9781BD26329000F08F4 /* PBXTargetDependency */,
 			);
-			name = CBTAppUITests;
+			name = SimmerUITests;
 			productName = CBTAppUITests;
-			productReference = 7A40C9761BD26329000F08F4 /* CBTAppUITests.xctest */;
+			productReference = 7A40C9761BD26329000F08F4 /* Simmer.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -318,6 +318,7 @@
 				TargetAttributes = {
 					7A40C94E1BD26329000F08F4 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = PND8ZPJHLJ;
 					};
 					7A40C96A1BD26329000F08F4 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -329,7 +330,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7A40C94A1BD26329000F08F4 /* Build configuration list for PBXProject "CBTApp" */;
+			buildConfigurationList = 7A40C94A1BD26329000F08F4 /* Build configuration list for PBXProject "Simmer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -342,9 +343,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7A40C94E1BD26329000F08F4 /* CBTApp */,
-				7A40C96A1BD26329000F08F4 /* CBTAppTests */,
-				7A40C9751BD26329000F08F4 /* CBTAppUITests */,
+				7A40C94E1BD26329000F08F4 /* Simmer */,
+				7A40C96A1BD26329000F08F4 /* SimmerTests */,
+				7A40C9751BD26329000F08F4 /* SimmerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -472,12 +473,12 @@
 /* Begin PBXTargetDependency section */
 		7A40C96D1BD26329000F08F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7A40C94E1BD26329000F08F4 /* CBTApp */;
+			target = 7A40C94E1BD26329000F08F4 /* Simmer */;
 			targetProxy = 7A40C96C1BD26329000F08F4 /* PBXContainerItemProxy */;
 		};
 		7A40C9781BD26329000F08F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7A40C94E1BD26329000F08F4 /* CBTApp */;
+			target = 7A40C94E1BD26329000F08F4 /* Simmer */;
 			targetProxy = 7A40C9771BD26329000F08F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -586,10 +587,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CBTApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = coreyTheDev.CBTApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = core.marr.CBTApp;
+				PRODUCT_NAME = Simmer;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -597,10 +601,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CBTApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = coreyTheDev.CBTApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = core.marr.CBTApp;
+				PRODUCT_NAME = Simmer;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -611,8 +618,8 @@
 				INFOPLIST_FILE = CBTAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = coreyTheDev.CBTAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CBTApp.app/CBTApp";
+				PRODUCT_NAME = Simmer;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simmer.app/Simmer";
 			};
 			name = Debug;
 		};
@@ -623,8 +630,8 @@
 				INFOPLIST_FILE = CBTAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = coreyTheDev.CBTAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CBTApp.app/CBTApp";
+				PRODUCT_NAME = Simmer;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simmer.app/Simmer";
 			};
 			name = Release;
 		};
@@ -634,7 +641,7 @@
 				INFOPLIST_FILE = CBTAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = coreyTheDev.CBTAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Simmer;
 				TEST_TARGET_NAME = CBTApp;
 				USES_XCTRUNNER = YES;
 			};
@@ -646,7 +653,7 @@
 				INFOPLIST_FILE = CBTAppUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = coreyTheDev.CBTAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Simmer;
 				TEST_TARGET_NAME = CBTApp;
 				USES_XCTRUNNER = YES;
 			};
@@ -655,7 +662,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7A40C94A1BD26329000F08F4 /* Build configuration list for PBXProject "CBTApp" */ = {
+		7A40C94A1BD26329000F08F4 /* Build configuration list for PBXProject "Simmer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A40C97D1BD26329000F08F4 /* Debug */,
@@ -664,7 +671,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7A40C97F1BD26329000F08F4 /* Build configuration list for PBXNativeTarget "CBTApp" */ = {
+		7A40C97F1BD26329000F08F4 /* Build configuration list for PBXNativeTarget "Simmer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A40C9801BD26329000F08F4 /* Debug */,
@@ -673,7 +680,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7A40C9821BD26329000F08F4 /* Build configuration list for PBXNativeTarget "CBTAppTests" */ = {
+		7A40C9821BD26329000F08F4 /* Build configuration list for PBXNativeTarget "SimmerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A40C9831BD26329000F08F4 /* Debug */,
@@ -682,7 +689,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7A40C9851BD26329000F08F4 /* Build configuration list for PBXNativeTarget "CBTAppUITests" */ = {
+		7A40C9851BD26329000F08F4 /* Build configuration list for PBXNativeTarget "SimmerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7A40C9861BD26329000F08F4 /* Debug */,

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,7 +16,37 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.88235294818878174" green="0.90588235855102539" blue="0.94901961088180542" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HotSpringIcon_1000" translatesAutoresizingMaskIntoConstraints="NO" id="DcU-zQ-n09">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Dg8-GD-bjB"/>
+                                    <constraint firstAttribute="width" constant="200" id="Dvy-kZ-s7T"/>
+                                    <constraint firstAttribute="width" secondItem="DcU-zQ-n09" secondAttribute="height" multiplier="1:1" id="qdv-jk-LJb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simmer " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHt-ck-1GY">
+                                <rect key="frame" x="260" y="410" width="79.5" height="26"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A C.B.T exercise to keep your emotions in check " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uby-kO-pr8">
+                                <rect key="frame" x="130.5" y="444" width="339" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BHt-ck-1GY" firstAttribute="top" secondItem="DcU-zQ-n09" secondAttribute="bottom" constant="10" id="EtZ-KF-7j4"/>
+                            <constraint firstItem="BHt-ck-1GY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Gee-wg-9LY"/>
+                            <constraint firstItem="DcU-zQ-n09" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Knz-tk-Dcc"/>
+                            <constraint firstItem="uby-kO-pr8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hf5-2M-scq"/>
+                            <constraint firstItem="uby-kO-pr8" firstAttribute="top" secondItem="BHt-ck-1GY" secondAttribute="bottom" constant="8" id="oun-uq-p52"/>
+                            <constraint firstItem="DcU-zQ-n09" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="pK9-Yb-PUU"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -23,4 +54,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="HotSpringIcon_1000" width="1000" height="1000"/>
+    </resources>
 </document>
