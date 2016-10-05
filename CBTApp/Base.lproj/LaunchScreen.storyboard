@@ -31,8 +31,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A C.B.T exercise to keep your emotions in check " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uby-kO-pr8">
-                                <rect key="frame" x="130.5" y="444" width="339" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A C.B.T exercise to keep your emotions in check " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uby-kO-pr8">
+                                <rect key="frame" x="25" y="444" width="550" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-LightItalic" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -46,6 +46,8 @@
                             <constraint firstItem="uby-kO-pr8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="hf5-2M-scq"/>
                             <constraint firstItem="uby-kO-pr8" firstAttribute="top" secondItem="BHt-ck-1GY" secondAttribute="bottom" constant="8" id="oun-uq-p52"/>
                             <constraint firstItem="DcU-zQ-n09" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="pK9-Yb-PUU"/>
+                            <constraint firstItem="uby-kO-pr8" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="25" id="qVi-ST-lRg"/>
+                            <constraint firstAttribute="trailing" secondItem="uby-kO-pr8" secondAttribute="trailing" constant="25" id="vTN-eR-W4S"/>
                         </constraints>
                     </view>
                 </viewController>
